@@ -1,1 +1,288 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Cloud June Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('\\static\\img2.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;  
+            justify-content: center; /* Initially center content horizontally */
+            position: relative;  
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 15px;
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+            text-align: center;
+        }
+ 
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .input-area {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+       
+        .input-area .boxContainer {
+        display: flex;
+        align-items: center;
+        padding-bottom: 20%;
+        }
+         
+        .boxContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        --boxSize: 8px;
+        --gutter: 4px;
+        width: calc((var(--boxSize) + var(--gutter)) * 5);
+        margin-bottom: 20px;
+        }
+ 
+        .box{
+        transform: scaleY(.4);
+        height: 100%;
+        width: var(--boxSize);
+        background: #12E2DC;
+        animation-duration: 1.2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        border-radius: 8px;
+        }
+ 
+        .box1{
+        animation-name: quiet;
+        }
+        .box2{
+        animation-name: normal;
+        }
+        .box3{
+        animation-name: quiet;
+        }
+        .box4{
+        animation-name: loud;
+        }
+        .box5{
+        animation-name: quiet;
+        }
+       
+        .call-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+ 
+        .call-buton .cc-calto-action-ripple {
+            z-index: 99999;
+            position: fixed;
+            display: 1;
+            background: #800000;
+            padding: 1rem;
+            border-radius: 100%;
+            box-sizing: border-box;
+            color: #ffffff;
+            animation: cc-calto-action-ripple 0.6s linear infinite;
+            text-decoration: none;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .call-buton .cc-calto-action-ripple i {
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
+        font-size: 2.2rem; }
+        .call-buton .cc-calto-action-ripple:hover i {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    @keyframes quiet {
+        25%{
+            transform: scaleY(.6);
+        }
+        50%{
+            transform: scaleY(.4);
+        }
+        75%{
+            transform: scaleY(.8);
+        }
+        }
+ 
+        @keyframes normal {
+        25%{
+            transform: scaleY(1);
+        }
+        50%{
+            transform: scaleY(.4);
+        }
+        75%{
+            transform: scaleY(.6);
+        }
+        }
+        @keyframes loud {
+        25%{
+            transform: scaleY(1);
+        }
+        50%{
+            transform: scaleY(.4);
+        }
+        75%{
+            transform: scaleY(1.2);
+        }
+        }
+    @-webkit-keyframes cc-calto-action-ripple {
+        0% {
+        -webkit-box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 0 rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2);
+        box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 0 rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2); }
+        100% {
+        -webkit-box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2), 0 0 0 20px rgba(236, 139, 0, 0);
+        box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2), 0 0 0 20px rgba(236, 139, 0, 0); } }
+   
+    @keyframes cc-calto-action-ripple {
+        0% {
+        -webkit-box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 0 rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2);
+        box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 0 rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2); }
+        100% {
+        -webkit-box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2), 0 0 0 20px rgba(236, 139, 0, 0);
+        box-shadow: 0 4px 10px rgba(236, 139, 0, 0.2), 0 0 0 5px rgba(236, 139, 0, 0.2), 0 0 0 10px rgba(236, 139, 0, 0.2), 0 0 0 20px rgba(236, 139, 0, 0); } }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            Excellence Driving CallGPT
+        </div>
+        <div class="messages" id="messages">
+            <ul></ul>
+        </div>
+        <img src="\static\img.png" alt="Avatar" class="avatar">
+        <div class="input-area">
+            <div class="boxContainer" id="boxContainer">
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+                <div class="box box3"></div>
+                <div class="box box4"></div>
+                <div class="box box5"></div>
+              </div>
+            <section id="startButton" class="call-buton">
+                <a class="cc-calto-action-ripple">
+                    <i class='bx bxs-phone'></i>
+                </a>
+            </section>
+            <section id="stopButton" class="call-buton">
+                <a class="cc-calto-action-ripple">
+                    <i class='bx bxs-phone'></i>
+                </a>
+            </section>
+        </div>
+    </div>
+ 
+    <script>
+        let ws = null;
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const boxContainer = document.getElementById('boxContainer');
+ 
+        function connectWebSocket() {
+            ws = new WebSocket("ws://localhost:8000/ws");
+ 
+            ws.onopen = () => {
+                startButton.disabled = false;
+            };
+ 
+            ws.onclose = () => {
+                startButton.disabled = true;
+                stopButton.style.display = 'none';
+                startButton.style.display = 'block';
+            };
+ 
+            ws.onmessage = (event) => {
+                const message = event.data;
+            }
+           
+ 
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+        }
+ 
+       
+        startButton.onclick = () => {
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                connectWebSocket();
+            }
+            ws.send('start');
+            boxContainer.style.display = 'flex';
+            startButton.style.display = 'none';
+            stopButton.style.display = 'block';
+        };
+ 
+        stopButton.onclick = () => {
+            ws.send('stop');
+            boxContainer.style.display = 'none';
+            stopButton.style.display = 'none';
+            startButton.style.display = 'block';
+        };
+ 
+ 
+        const callButton = document.querySelector('.cc-calto-action-ripple');
+ 
+        // Define an array of colors to cycle through on each click
+        const colors = [ '#800000', '#00FF00'];
+        let colorIndex = 0;
+ 
+        // Add a click event listener to change color
+        callButton.addEventListener('click', () => {
+        // Set the button's background color to the next color in the array
+        callButton.style.backgroundColor = colors[colorIndex];
+           
+         // Update the color index
+         colorIndex = (colorIndex + 1) % colors.length; // Loop back to start after the last color
+        });
+ 
+        // Initial connection
+        connectWebSocket();
+ 
+        // Handle page unload
+        window.onbeforeunload = () => {
+            if (ws) {
+                ws.close();
+            }
+        };
+    </script>
+</body>
+</html>
+ 
