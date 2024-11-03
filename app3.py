@@ -140,7 +140,7 @@ class AppointmentAgent(Agent):
             full_prompt = f"{knowledge_prompt}\n\nUser: {user_input}\n\nChat History: {chat_history}"
 
             response = self.llm.chat.completions.create(
-                model="gpt-4",  # Updated to use gpt-4
+                model="gpt-4o-mini",  # Updated to use gpt-4
                 messages=[
                     {"role": "system", "content": "You are an appointment booking assistant."},
                     {"role": "user", "content": full_prompt}
