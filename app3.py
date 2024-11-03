@@ -20,7 +20,7 @@ temp_dir = tempfile.mkdtemp()
 
 def read_data_files():
     texts = []
-    data_dir = 'scraped_data'
+    data_dir = 'data'
     if os.path.exists(data_dir):
         for filename in os.listdir(data_dir):
             if filename.endswith('.txt'):
@@ -111,7 +111,7 @@ class S2SAgent(Agent):
                 full_prompt = f"{knowledge_prompt}\n\nUser: {user_input}"
                 
                 response = self.llm.chat.completions.create(
-                    model="gpt-4",  # Updated to use gpt-4
+                    model="gpt-4o-mini",  # Updated to use gpt-4
                     messages=[
                         {"role": "system", "content": "You are a helpful assistant with additional knowledge."},
                         {"role": "user", "content": full_prompt}
@@ -156,7 +156,7 @@ class AppointmentAgent(Agent):
         return response_content
 
 # Initialize OpenAI client (rest of the code remains the same)
-client = OpenAI(api_key='')  # Replace with your actual API key
+client = OpenAI(api_key='sk-proj-VkguSuPmgA')  # Replace with your actual API key
 
 # Initialize agents
 appointment_agent = AppointmentAgent(client)
